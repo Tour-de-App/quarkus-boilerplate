@@ -20,7 +20,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./
-          file: {context}/src/main/docker/Dockerfile.jvm
+          file: ./src/main/docker/Dockerfile.jvm
           tags: tda-quarkus:latest
           outputs: type=docker,dest=/tmp/tda-quarkus.tar
 
