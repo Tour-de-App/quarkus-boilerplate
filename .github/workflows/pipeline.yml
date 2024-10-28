@@ -16,8 +16,8 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
-          distribution: 'adopt'
+          java-version: "17"
+          distribution: "adopt"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -30,12 +30,12 @@ jobs:
         with:
           context: ./
           file: ./src/main/docker/Dockerfile.jvm
-          tags: tda-quarkus:latest
-          outputs: type=docker,dest=/tmp/tda-quarkus.tar
+          tags: tda:latest
+          outputs: type=docker,dest=/tmp/tda.tar
 
       - name: Upload to TdA
         uses: Tour-de-App/upload-app@tda-25
         with:
-          team_secret: ${{ secrets.TEAM_SECRET }}
-          image_name: tda-quarkus
-          image_path: /tmp/tda-quarkus.tar
+          team_token: ${{ secrets.TEAM_TOKEN }}
+          image_name: tda
+          image_path: /tmp/tda.tar
